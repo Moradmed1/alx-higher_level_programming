@@ -1,21 +1,16 @@
 #!/usr/bin/python3
-from sys import argv, exit
+if __name__ == "__main__":
 from calculator_1 import add, sub, mul, div
-argv_len = len(argv)
-if argv_len != 4:
-print("Usage: ./100-my_calculator.py <a> <operator> <b>")
+from sys import argv
+
+msg = ["Usage: ./100-my_calculator.py <a> <operator> <b>",
+"Unknown operator. Available operators: +, -, * and /"]
+op = {'+': add, '-': sub, '*': mul, '/': div}
+
+if len(argv) != 4 or argv[2] not in list(op.keys()):
+print(msg[0] if len(argv) != 4 else msg[1])
 exit(1)
-elif argv[2] not in ("+", "-", "*", "/"):
-print("Unknown operator. Available operators: +, -, * and /")
-exit(1)
-else:
+
 a = int(argv[1])
 b = int(argv[3])
-if argv[2] == "+":
-print("{} + {} = {}".format(a, b, add(a, b)))
-elif argv[2] == "-":
-print("{} - {} = {}".format(a, b, sub(a, b)))
-elif argv[2] == "*":
-print("{} * {} = {}".format(a, b, mul(a, b)))
-elif argv[2] == "/":
-print("{} / {} = {}".format(a, b, div(a, b)))
+print(f"{a} {argv[2]} {b} = {op[argv[2]](a, b)}")
