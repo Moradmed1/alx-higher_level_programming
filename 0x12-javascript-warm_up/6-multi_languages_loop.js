@@ -1,4 +1,5 @@
 #!/usr/bin/node
-
-const langs = ['C is fun', 'Python is cool', 'JavaScript is amazing'];
-for (const l of langs) console.log(l);
+const lst = ['C is fun', 'Python is cool', 'JavaScript is amazing'];
+for (const line of lst) {
+  console.log(line);
+}
